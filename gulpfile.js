@@ -1,4 +1,8 @@
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var minifyCSS = require('gulp-csso');
+var concat = require('gulp-concat');
+var autoprefixer = require('gulp-autoprefixer');
 
 var path = {
     src: {
@@ -10,8 +14,8 @@ var path = {
     },
     dist: {
         html: 'dist',
-        css: 'dist/css',
-        js: 'dist/js',
+        css: 'dist',
+        js: 'dist',
         fonts: 'dist/fonts/roboto',
         img: 'dist/img'
     }
@@ -24,11 +28,19 @@ gulp.task('html', function(){
 
 gulp.task('css', function(){
     return gulp.src(path.src.css)
+        .pipe(autoprefixer({
+            browsers: ['last 15 versions'],
+            cascade: false
+        }))
+        .pipe(concat('index.css'))
+        .pipe(minifyCSS())
         .pipe(gulp.dest(path.dist.css))
 });
 
 gulp.task('js', function(){
     return gulp.src(path.src.js)
+        .pipe(concat('index.js'))
+        .pipe(uglify())
         .pipe(gulp.dest(path.dist.js))
 });
 
