@@ -1,2 +1,10 @@
 # time-to-chain
-lending
+для запуска:
+
+    npm install gulp-cli -g
+    npm i
+    
+сборка:
+    
+    gulp
+    
