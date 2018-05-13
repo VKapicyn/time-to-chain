@@ -52,3 +52,39 @@ h5, h4, h3, h2, h1 {
 .to-center{
     margin-top:120px;
 }
+
+#team img {
+    max-width: 80%;
+}
+
+#team .second img {
+    margin-top: 20px;
+    max-width: 58.2%;
+}
+
+#team .col {
+    margin-bottom: 20px;
+}
+
+#team .name {
+    font-weight: 600;
+}
+
+#team .position {
+    margin: 0;
+    
+    color: #7a7a7a;
+}
+
+.block-title {
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    #team .second img {
+        max-width: 80%;
+        margin-top: 0;
+    }
+}
