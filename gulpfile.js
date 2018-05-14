@@ -1,10 +1,11 @@
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-csso');
-var concat = require('gulp-concat');
-var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const uglify = require('gulp-uglify');
+const minifyCSS = require('gulp-csso');
+const concat = require('gulp-concat');
+const autoprefixer = require('gulp-autoprefixer');
+const browserSync = require('browser-sync').create();
 
-var path = {
+const path = {
     src: {
         html: 'src/index.html',
         css: 'src/css/*.css',
@@ -54,4 +55,15 @@ gulp.task('img', function(){
         .pipe(gulp.dest(path.dist.img))
 });
 
-gulp.task('default',['html','css','js','fonts','img']);
+gulp.task('serve', ['html','css','js','fonts','img'], function() {
+
+    browserSync.init({
+        server: "./dist"
+    });
+
+    gulp.watch(path.src.css, ['css']).on('change', browserSync.reload);
+    gulp.watch(path.src.js, ['js']).on('change', browserSync.reload);
+    gulp.watch(path.src.html, ['html']).on('change', browserSync.reload);
+});
+
+gulp.task('default',['serve']);
