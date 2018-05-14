@@ -6,6 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 
 const path = {
+    server: './dist',
     src: {
         html: 'src/index.html',
         css: 'src/css/*.css',
@@ -58,7 +59,7 @@ gulp.task('img', function(){
 gulp.task('serve', ['html','css','js','fonts','img'], function() {
 
     browserSync.init({
-        server: "./dist"
+        server: path.server
     });
 
     gulp.watch(path.src.css, ['css']).on('change', browserSync.reload);

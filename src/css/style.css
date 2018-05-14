@@ -88,3 +88,15 @@ h5, h4, h3, h2, h1 {
         margin-top: 0;
     }
 }
+
+.hide-on-med-and-down.told-menu {
+    height: inherit;
+}
+
+.hide-on-med-and-down.told-menu li {
+    height: inherit;
+}
+
+.hide-on-med-and-down.told-menu li a {
+    height: inherit;
+}
